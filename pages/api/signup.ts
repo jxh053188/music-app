@@ -24,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return
     }
 
-    const token = jwt.sign({ email: user.email, id: user.id, time: Date.now(), }, 'secret', { expiresIn: '8h' });
+    const token = jwt.sign({ id: user.id, email: user.email, time: Date.now(), }, 'secret', { expiresIn: '8h' });
     
     res.setHeader('Set-Cookie', cookie.serialize('TRAX_ACCESS_TOKEN', token, {
         httpOnly: true,
